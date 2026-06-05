@@ -1,6 +1,6 @@
-let num1 = 0;
-let operator = null;
-let num2 = 0;
+let a = '0';
+let operator = ' ';
+let b = ' ';
 
 
 function add(a, b) {
@@ -21,15 +21,45 @@ function divide(a, b) {
 
 function operate(operator, a, b) {
     switch (operator) {
-        case '+':
+        case ' + ':
             return add(a, b);
-        case '-':
+        case ' - ':
             return subtract(a, b);
-        case '*':
+        case ' * ':
             return multiply(a, b);
-        case '/':
+        case ' / ':
             return divide(a, b);
         default:
             console.error(`${operator} is invalid as an operator!`);
     }
 }
+
+const operatorRow = document.getElementById('operatorRow');
+
+operatorRow.addEventListener('click', (event) => {
+    if(event.target.tagName === 'BUTTON') {
+        const operation = event.target.id;
+    
+        switch (operation) {
+            case 'add':
+                operator = ' + ';
+                break;
+            case 'subtract':
+                operator = ' - ';
+                break;
+            case 'multiply':
+                operator = ' * ';
+                break;
+            case 'divide':
+                operator = ' / ';
+                break;
+            default:
+                operator = ' ';
+        }
+    }
+    console.log(operator);
+});
+
+
+
+
