@@ -74,7 +74,7 @@ for(let i = 0; i < numRows.length; ++i) {
         if(event.target.tagName === 'BUTTON') {
             number += event.target.textContent;
             console.log("Current typing string", number);
-            document.getElementById("outPut").textContent = number;
+            document.getElementById("output").textContent = number;
         }
     });
 }
@@ -96,7 +96,7 @@ function calculate () {
     let a = numbers.pop();
     const result = operate(operator, a, b);
 
-    document.getElementById("outPut").textContent = result;
+    document.getElementById("output").textContent = result;
     console.log(result);
     
     numbers.push(result);
