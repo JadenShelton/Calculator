@@ -138,3 +138,54 @@ backspace.addEventListener('click', () => {
         document.getElementById("output").textContent = number;
     }
 });
+
+document.addEventListener('keydown', (event) => {
+    if(event.key >= '0' && event.key <= '9') {
+        number += event.key;
+        document.getElementById("output").textContent = number;
+    }
+    console.log("Current typing string", number);
+
+    if(event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+
+    pushNumber();
+
+        if (numbers.length === 2 && operator !== '') {
+            calculate();
+        }
+
+        operator = event.key;
+    }
+    console.log("Current operator:", operator);
+
+    if(event.key === 'Enter' || event.key === '=') {
+        pushNumber();
+
+        if (numbers.length === 2 && operator !== '') {
+            calculate();
+            operator = '';
+        }
+    }
+
+    if(event.key === 'Backspace') {
+        if(number.length > 0) {
+            number = number.substring(0, number.length - 1);
+            document.getElementById("output").textContent = number;
+        }
+    }
+
+    if(event.key == '.') {
+        if(!number.includes('.')){
+            number += event.target.textContent;
+            console.log("Current typing string", number);
+            document.getElementById("output").textContent = number;
+        }
+    }
+});
+
+//fixes button issues within browser and using the enter button for calculations
+document.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        event.target.blur();
+    }
+});
