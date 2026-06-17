@@ -183,7 +183,8 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-//fixes button issues within browser and using the enter button for calculations
+//fixes button issues within browser and using the enter button for calculations, 
+// without this hitting enter key creates double "clicks" on last clicked button in browser
 document.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         event.target.blur();

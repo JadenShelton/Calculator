@@ -4,30 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <table class="calculator">
-        <tr>
-            <td>
-                <div id="input"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
+        <tr id="displayRow">
+            <td colspan="4">
                 <div id="output">0</div>
             </td>
         </tr>
         <tr id="utilRow">
-            <td>
+            <td class="util">
                 <button id="calc">=</button>
             </td>
-            <td>
+            <td class="util">
                 <button id="backspace">&#x232B;</button>
             </td>
-            <td>
+            <td class="util">
                 <button id="clear">C</button>
             </td>
-            <td>
+            <td class="util">
                 <button id="decimal">.</button>
             </td>
         </tr>
@@ -79,7 +75,7 @@
             </td>
         </tr>
         <tr class="numRow">
-            <td class="num">
+            <td class="num" colspan="3">
                 <button>0</button>
             </td>
         </tr>
