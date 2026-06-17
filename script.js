@@ -121,3 +121,12 @@ clear.addEventListener('click', () => {
     numbers = [];
     document.getElementById("output").textContent = number;
 });
+
+const decimal = document.getElementById('decimal');
+decimal.addEventListener('click', () => {
+    if(!number.includes('.')){
+        number += event.target.textContent;
+        console.log("Current typing string", number);
+        document.getElementById("output").textContent = number;
+    }
+})
