@@ -16,6 +16,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if(b === 0) {
+        return "Can't Divide by 0";
+    }
     return a / b;
 }
 
@@ -38,10 +41,7 @@ const operatorRow = document.getElementById('operatorRow');
 operatorRow.addEventListener('click', (event) => {
     if(event.target.tagName === 'BUTTON') {
 
-        if(number !== '') {
-            numbers.push(Number(number));
-            number = '';
-        }
+        pushNumber();
 
         if (numbers.length === 2 && operator !== '') {
             calculate();
@@ -81,10 +81,9 @@ for(let i = 0; i < numRows.length; ++i) {
 
 const calc = document.getElementById('calc');
 calc.addEventListener('click', () => {
-    if (number !== '') {
-        numbers.push(Number(number))
-        number = '';
-    }
+    
+    pushNumber();
+
     if (numbers.length === 2 && operator !== '') {
         calculate();
         operator = '';
@@ -102,3 +101,23 @@ function calculate () {
     numbers.push(result);
     console.table(numbers);
 }
+
+function pushNumber() {
+    // If numbers has a leftover result with no operator pending,
+    // it's stale — the user is starting a new calculation.
+    if(number !== '') {
+        if(numbers.length === 1 && operator === '') {
+            numbers = [];
+        }
+        numbers.push(Number(number));
+        number = '';
+    }
+}
+
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+    operator = '';
+    number = '';
+    numbers = [];
+    document.getElementById("output").textContent = number;
+});
