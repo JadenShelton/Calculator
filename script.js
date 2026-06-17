@@ -129,4 +129,12 @@ decimal.addEventListener('click', () => {
         console.log("Current typing string", number);
         document.getElementById("output").textContent = number;
     }
-})
+});
+
+const backspace = document.getElementById('backspace');
+backspace.addEventListener('click', () => {
+    if(number.length > 0) {
+        number = number.substring(0, number.length - 1);
+        document.getElementById("output").textContent = number;
+    }
+});
